@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gayatri | B.Tech 1st Year • Aspiring Full Stack Developer & UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Gayatri - 1st Year B.Tech CSE student, hardworking tech enthusiast, hackathon participant, and believer in teamwork. Built with pure HTML, CSS, and Vanilla JavaScript with Scroll Depth tracking.">
+  <meta name="keywords" content="Gayatri, Portfolio, B.Tech 1st Year, Full Stack Developer, UI/UX Designer, Hackathons, C++, Python, Web Development, Teamwork, Scroll Depth, Vanilla JS">
+  <meta name="author" content="Gayatri">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts: Inter, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons (Pure CSS icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Pure CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Top Horizontal Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Background Interactive Particles (Pure Vanilla HTML5 Canvas) -->
+  <canvas id="particle-canvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Light Gradients for 3D Depth Layering -->
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+  <div class="ambient-orb orb-3" aria-hidden="true"></div>
+
+  <!-- Floating Scroll Depth HUD (Tracks Real-time Scroll Depth %, Circular Gauge & Section) -->
+  <div class="scroll-depth-hud" id="scroll-depth-hud" aria-label="Page Scroll Depth Indicator" title="Your live scroll depth progress">
+    <div class="depth-gauge">
+      <svg class="depth-circle-svg" viewBox="0 0 36 36">
+        <path class="depth-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="depth-circle-bar" id="depth-circle-bar" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      </svg>
+      <span class="depth-percent-text" id="depth-percent-text">0%</span>
+    </div>
+    <div class="depth-meta">
+      <span class="depth-caption">SCROLL DEPTH</span>
+      <span class="depth-section-name" id="depth-active-section">Hero Intro</span>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Gayatri Portfolio Home">
+        <span class="logo-box">
+          <span class="logo-symbol">&lt;G/&gt;</span>
+        </span>
+        <span class="logo-text">Gayatri<span class="accent-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link"><i class="fa-regular fa-user"></i> About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a></li>
+          <li class="nav-item"><a href="#hackathons" class="nav-link"><i class="fa-solid fa-trophy"></i> Hackathons</a></li>
+          <li class="nav-item"><a href="#hobbies" class="nav-link"><i class="fa-solid fa-compass"></i> Hobbies</a></li>
+          <li class="nav-item"><a href="#values" class="nav-link"><i class="fa-solid fa-handshake"></i> Values</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link"><i class="fa-regular fa-paper-plane"></i> Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Items: Theme Switcher & Connect CTA -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode" title="Toggle Theme">
+          <i class="fa-solid fa-moon dark-icon"></i>
+          <i class="fa-solid fa-sun light-icon"></i>
+        </button>
+
+        <a href="#contact" class="btn btn-sm btn-primary nav-cta">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content">
+
+    <!-- ==================== HERO SECTION (DEPTH 0% - 15%) ==================== -->
+    <section class="hero-section section-padding depth-layer" id="hero" data-depth-name="Hero Intro" data-depth-level="1">
+      <div class="container hero-grid">
+        
+        <!-- Left Hero Column: Introduction & Pitch -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-indicator"></span>
+            <span>B.Tech 1st Year • Tech Enthusiast & Developer</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Gayatri</span>
+          </h1>
+
+          <div class="typewriter-container">
+            <span class="typewriter-prefix">I am a </span>
+            <span class="typewriter-text" id="typewriter-text"></span>
+            <span class="typewriter-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            A passionate first-year engineering student blending deep curiosity for 
+            <strong>Full Stack Development</strong> and human-centric <strong>UI/UX Design</strong>. 
+            Recognized for an unwavering <strong>hardworking work ethic</strong> and a strong conviction that 
+            <strong>collaborative teamwork</strong> builds the most impactful technologies.
+          </p>
+
+          <!-- Core Qualities Pill Tags -->
+          <div class="hero-pill-tags">
+            <span class="quality-tag"><i class="fa-solid fa-fire"></i> Relentless Hard Worker</span>
+            <span class="quality-tag"><i class="fa-solid fa-people-group"></i> Team Player & Leader</span>
+            <span class="quality-tag"><i class="fa-solid fa-bolt"></i> Rapid Hackathon Prototyper</span>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-actions">
+            <a href="#hackathons" class="btn btn-primary btn-lg">
+              <span>View Hackathons</span>
+              <i class="fa-solid fa-trophy"></i>
+            </a>
+            <a href="#contact" class="btn btn-secondary btn-lg">
+              <span>Get in Touch</span>
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="#skills" class="btn btn-outline btn-lg">
+              <span>Explore Skills</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+          </div>
+
+          <!-- Social Quick Links -->
+          <div class="hero-socials">
+            <span class="social-label">Find me on:</span>
+            <div class="social-links">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LeetCode">
+                <i class="fa-solid fa-code"></i>
+              </a>
+              <a href="mailto:gayatri.tech.dev@example.com" class="social-link" title="Send Email">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Column: Interactive Terminal & Portrait Card -->
+        <div class="hero-visual">
+          <div class="visual-stack">
+            
+            <!-- Interactive Terminal Window -->
+            <div class="code-terminal-card" data-tilt>
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <div class="terminal-tab">
+                  <i class="fa-brands fa-js"></i>
+                  <span>gayatri.profile.ts</span>
+                </div>
+                <button class="run-btn" id="run-terminal-btn" title="Click to run this profile code">
+                  <i class="fa-solid fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="terminal-body">
+                <pre class="code-block"><code><span class="token-keyword">const</span> <span class="token-variable">gayatri</span>: <span class="token-type">StudentDeveloper</span> = {
+  <span class="token-prop">name</span>: <span class="token-string">"Gayatri"</span>,
+  <span class="token-prop">academicYear</span>: <span class="token-string">"B.Tech 1st Year (CSE)"</span>,
+  <span class="token-prop">qualities</span>: [
+    <span class="token-string">"Hardworking & Resilient"</span>,
+    <span class="token-string">"Believes in Teamwork & Synergy"</span>
+  ],
+  <span class="token-prop">primaryLanguages</span>: [
+    <span class="token-string">"C++"</span>, <span class="token-string">"Python"</span>, <span class="token-string">"JavaScript"</span>, <span class="token-string">"C"</span>
+  ],
+  <span class="token-prop">interests</span>: [
+    <span class="token-string">"Full Stack Web"</span>, 
+    <span class="token-string">"UI/UX Prototyping"</span>, 
+    <span class="token-string">"Hackathons"</span>
+  ],
+  <span class="token-prop">status</span>: <span class="token-string">"Building the future, one commit at a time 🚀"</span>
+};
+
+<span class="token-comment">// Ready to collaborate!</span>
+<span class="token-keyword">export default</span> <span class="token-variable">gayatri</span>;</code></pre>
+              </div>
+              <div class="terminal-footer">
+                <div class="status-indicator">
+                  <span class="status-circle"></span>
+                  <span>Pure JS Engine • Ready</span>
+                </div>
+                <span class="terminal-hint">Click 'Run Code' to execute</span>
+              </div>
+            </div>
+
+            <!-- Floating 3D Metric Badges -->
+            <div class="floating-badge badge-top-right">
+              <div class="badge-icon trophy"><i class="fa-solid fa-award"></i></div>
+              <div class="badge-content">
+                <strong>4+ Hackathons</strong>
+                <span>Sprint Participant</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <div class="badge-icon team"><i class="fa-solid fa-people-carry-box"></i></div>
+              <div class="badge-content">
+                <strong>Team Player</strong>
+                <span>Collaborative Spirit</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== STATS COUNTER STRIP ==================== -->
+    <section class="stats-strip" aria-label="Quick Highlights">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-target="1">0</div>
+            <div class="stat-suffix">st Year</div>
+            <div class="stat-label">B.Tech Engineering</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-suffix">+</div>
+            <div class="stat-label">Hackathons Participated</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="6">0</div>
+            <div class="stat-suffix">+</div>
+            <div class="stat-label">Programming Languages</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-suffix">%</div>
+            <div class="stat-label">Teamwork & Dedication</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT & QUALITIES (DEPTH 15% - 30%) ==================== -->
+    <section class="about-section section-padding depth-layer" id="about" data-depth-name="About Gayatri" data-depth-level="2">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-regular fa-id-badge"></i> Background & Core Philosophy</span>
+          <h2 class="section-title">Driven by Curiosity, Grounded in <span class="gradient-text">Hard Work</span></h2>
+          <p class="section-subtitle">
+            Get to know my journey as a 1st year B.Tech student, my passion for computing, and the human qualities that define how I code and collaborate.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- Left Column: Portrait & Quick Bio Card -->
+          <div class="about-card-bio">
+            <div class="bio-avatar-wrapper">
+              <img src="assets/images/avatar.svg" alt="Gayatri - Developer Portrait" class="bio-avatar-img">
+              <div class="avatar-glow"></div>
+            </div>
+            
+            <div class="bio-details">
+              <h3 class="bio-name">Gayatri</h3>
+              <p class="bio-subtitle"><i class="fa-solid fa-graduation-cap"></i> B.Tech 1st Year (Computer Science & Engineering)</p>
+              
+              <p class="bio-quote">
+                "I don't just write syntax; I architect digital experiences where purposeful logic meets engaging human interaction."
+              </p>
+
+              <div class="bio-meta-list">
+                <div class="bio-meta-item">
+                  <span class="meta-label"><i class="fa-solid fa-location-dot"></i> Location:</span>
+                  <span class="meta-value">India</span>
+                </div>
+                <div class="bio-meta-item">
+                  <span class="meta-label"><i class="fa-solid fa-laptop-code"></i> Main Focus:</span>
+                  <span class="meta-value">Full Stack Dev & UI/UX</span>
+                </div>
+                <div class="bio-meta-item">
+                  <span class="meta-label"><i class="fa-solid fa-check-circle"></i> Availability:</span>
+                  <span class="meta-value status-available">Open for Hackathons & Projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Narrative & Dual Core Pillars -->
+          <div class="about-narrative">
+            <h3 class="narrative-heading">
+              A Freshman with High Ambitions & Craftsmanship
+            </h3>
+            
+            <p class="narrative-paragraph">
+              Stepping into my <strong>first year of B.Tech</strong>, I chose to dive straight into real-world software engineering rather than waiting for future semesters. Every day is an opportunity to conquer new programming concepts, design systems, and problem-solving patterns.
+            </p>
+
+            <p class="narrative-paragraph">
+              Whether it's dissecting data structures in <strong>C++</strong>, crafting dynamic user experiences with <strong>JavaScript</strong>, or wireframing frictionless journeys in <strong>Figma</strong>, my drive comes from solving real-world challenges.
+            </p>
+
+            <!-- Dual Pillars: Hardworking & Teamwork -->
+            <div class="traits-container">
+              
+              <!-- Quality 1: Hardworking -->
+              <div class="trait-box">
+                <div class="trait-icon-box fire">
+                  <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <div class="trait-content">
+                  <h4 class="trait-title">Relentless Hard Work & Grit</h4>
+                  <p class="trait-desc">
+                    I believe talent sets the floor, but continuous daily practice and perseverance set the ceiling. From debugging complex recursion trees to coding through intense hackathon nights, I approach every technical obstacle with tenacity.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Quality 2: Believes in Teamwork -->
+              <div class="trait-box">
+                <div class="trait-icon-box team">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="trait-content">
+                  <h4 class="trait-title">Strong Believer in Teamwork</h4>
+                  <p class="trait-desc">
+                    Software is inherently collaborative. I thrive when brainstorming alongside teammates, listening to diverse viewpoints, sharing credit, and uniting individual strengths toward a shared victory. Team synergy fuels my best work.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS & PROGRAMMING LANGUAGES (DEPTH 30% - 50%) ==================== -->
+    <section class="skills-section section-padding depth-layer" id="skills" data-depth-name="Technical Skills" data-depth-level="3">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-microchip"></i> My Tech Arsenal</span>
+          <h2 class="section-title">Programming Languages & <span class="gradient-text">Developer Toolkit</span></h2>
+          <p class="section-subtitle">
+            A comprehensive overview of the programming languages, frontend/backend tools, and design capabilities I actively practice with.
+          </p>
+        </div>
+
+        <!-- Interactive Filter Tabs -->
+        <div class="filter-tabs-wrapper">
+          <div class="filter-tabs" role="tablist">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <i class="fa-solid fa-layer-group"></i> All Stack
+            </button>
+            <button class="filter-btn" data-filter="languages" role="tab" aria-selected="false">
+              <i class="fa-solid fa-code"></i> Programming Languages
+            </button>
+            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">
+              <i class="fa-solid fa-globe"></i> Web & Full Stack
+            </button>
+            <button class="filter-btn" data-filter="design" role="tab" aria-selected="false">
+              <i class="fa-solid fa-pen-ruler"></i> UI/UX & Design
+            </button>
+            <button class="filter-btn" data-filter="tools" role="tab" aria-selected="false">
+              <i class="fa-solid fa-screwdriver-wrench"></i> Tools & Core CS
+            </button>
+          </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skills-grid">
+          
+          <!-- Skill: C++ -->
+          <div class="skill-card" data-category="languages">
+            <div class="skill-header">
+              <div class="skill-icon-wrap cpp">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">C++</h4>
+                <span class="skill-level">Problem Solving & DSA</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Core language for Data Structures, Algorithms, Object-Oriented Programming (OOPs), Standard Template Library (STL), and competitive coding.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">DSA</span>
+              <span class="tag">OOP</span>
+              <span class="tag">STL</span>
+              <span class="tag">Memory</span>
+            </div>
+          </div>
+
+          <!-- Skill: Python -->
+          <div class="skill-card" data-category="languages">
+            <div class="skill-header">
+              <div class="skill-icon-wrap python">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Python</h4>
+                <span class="skill-level">Versatile & Rapid</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Rapid prototyping, automation scripts, problem solving, data handling, and building clean algorithmic pipelines.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Automation</span>
+              <span class="tag">APIs</span>
+              <span class="tag">Logic</span>
+              <span class="tag">Scripts</span>
+            </div>
+          </div>
+
+          <!-- Skill: C Language -->
+          <div class="skill-card" data-category="languages">
+            <div class="skill-header">
+              <div class="skill-icon-wrap c-lang">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">C</h4>
+                <span class="skill-level">Low-Level Foundation</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Deep understanding of computer architecture fundamentals, pointers, dynamic memory management (malloc/free), and structured coding.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Pointers</span>
+              <span class="tag">Structures</span>
+              <span class="tag">Low-Level</span>
+              <span class="tag">Memory</span>
+            </div>
+          </div>
+
+          <!-- Skill: JavaScript (ES6+) -->
+          <div class="skill-card" data-category="languages web">
+            <div class="skill-header">
+              <div class="skill-icon-wrap js">
+                <i class="fa-brands fa-js"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">JavaScript (ES6+)</h4>
+                <span class="skill-level">Intermediate & Active</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Modern asynchronous JS, DOM manipulation, promises, async/await, event architecture, and responsive dynamic interfaces.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">ES6+</span>
+              <span class="tag">Async/Await</span>
+              <span class="tag">Fetch API</span>
+              <span class="tag">DOM</span>
+            </div>
+          </div>
+
+          <!-- Skill: Java -->
+          <div class="skill-card" data-category="languages">
+            <div class="skill-header">
+              <div class="skill-icon-wrap java">
+                <i class="fa-brands fa-java"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Java</h4>
+                <span class="skill-level">Foundational</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Object-oriented design principles, class hierarchies, inheritance, encapsulation, and Java virtual machine concepts.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">OOP Design</span>
+              <span class="tag">Classes</span>
+              <span class="tag">Inheritance</span>
+            </div>
+          </div>
+
+          <!-- Skill: HTML5 & CSS3 -->
+          <div class="skill-card" data-category="web">
+            <div class="skill-header">
+              <div class="skill-icon-wrap html-css">
+                <i class="fa-brands fa-html5"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">HTML5 & Modern CSS3</h4>
+                <span class="skill-level">Proficient & Creative</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Semantic markup, accessibility (ARIA), CSS Grid, Flexbox, custom keyframe animations, variables, and responsive layouts.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Responsive</span>
+              <span class="tag">CSS Grid</span>
+              <span class="tag">Flexbox</span>
+              <span class="tag">Keyframes</span>
+            </div>
+          </div>
+
+          <!-- Skill: Tailwind CSS -->
+          <div class="skill-card" data-category="web design">
+            <div class="skill-header">
+              <div class="skill-icon-wrap tailwind">
+                <i class="fa-solid fa-wind"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Tailwind CSS</h4>
+                <span class="skill-level">Modern Prototyping</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Building sleek, modern, scalable utility-first UIs with responsive breakpoints, dark mode variants, and clean layout patterns.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Utility-First</span>
+              <span class="tag">Responsive</span>
+              <span class="tag">Design Tokens</span>
+            </div>
+          </div>
+
+          <!-- Skill: React Basics & Full Stack -->
+          <div class="skill-card" data-category="web">
+            <div class="skill-header">
+              <div class="skill-icon-wrap react">
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">React & Component Dev</h4>
+                <span class="skill-level">Hands-on Learner</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Component-driven design, JSX syntax, props, state hooks (useState, useEffect), and modular frontend composition.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Hooks</span>
+              <span class="tag">Components</span>
+              <span class="tag">Virtual DOM</span>
+              <span class="tag">SPA</span>
+            </div>
+          </div>
+
+          <!-- Skill: Node.js & REST APIs -->
+          <div class="skill-card" data-category="web">
+            <div class="skill-header">
+              <div class="skill-icon-wrap node">
+                <i class="fa-brands fa-node-js"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Node.js & Backend Basics</h4>
+                <span class="skill-level">Foundational</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Setting up Express servers, handling HTTP routes, JSON endpoints, middleware, and connecting client-to-server logic.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">REST APIs</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">JSON</span>
+              <span class="tag">NPM</span>
+            </div>
+          </div>
+
+          <!-- Skill: Figma & UI/UX -->
+          <div class="skill-card" data-category="design">
+            <div class="skill-header">
+              <div class="skill-icon-wrap figma">
+                <i class="fa-brands fa-figma"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">UI/UX Design in Figma</h4>
+                <span class="skill-level">Design Enthusiast</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Interactive wireframing, high-fidelity mockups, auto-layout, micro-interaction planning, and color/typography hierarchy.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Wireframes</span>
+              <span class="tag">Auto-Layout</span>
+              <span class="tag">Prototyping</span>
+              <span class="tag">User Centric</span>
+            </div>
+          </div>
+
+          <!-- Skill: Git & GitHub -->
+          <div class="skill-card" data-category="tools">
+            <div class="skill-header">
+              <div class="skill-icon-wrap git">
+                <i class="fa-brands fa-git-alt"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Git & GitHub</h4>
+                <span class="skill-level">Essential Collaborative</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Version control branching, commits, Pull Requests, merge conflict resolution, and collaborative team repositories.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Branching</span>
+              <span class="tag">PRs</span>
+              <span class="tag">Team Collaboration</span>
+              <span class="tag">Open Source</span>
+            </div>
+          </div>
+
+          <!-- Skill: Linux & Terminal -->
+          <div class="skill-card" data-category="tools">
+            <div class="skill-header">
+              <div class="skill-icon-wrap linux">
+                <i class="fa-brands fa-linux"></i>
+              </div>
+              <div class="skill-meta">
+                <h4 class="skill-name">Linux & Dev Environment</h4>
+                <span class="skill-level">Daily Driver</span>
+              </div>
+            </div>
+            <p class="skill-description">
+              Bash scripting, command-line utilities, package managers, VS Code extensions, and developer productivity setups.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Bash</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">CLI</span>
+              <span class="tag">Productivity</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Next Learning Horizon Banner -->
+        <div class="learning-horizon-banner">
+          <div class="banner-icon">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <div class="banner-text">
+            <strong>Currently Exploring & Leveling Up:</strong>
+            <span>Next.js 14 App Router, Full Stack Database Integration (PostgreSQL & Supabase), Docker Containerization & Advanced DSA in C++.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== HACKATHON ARENA (DEPTH 50% - 70%) ==================== -->
+    <section class="hackathons-section section-padding depth-layer" id="hackathons" data-depth-name="Hackathon Arena" data-depth-level="4">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-trophy"></i> Hackathon Arena</span>
+          <h2 class="section-title">Sprint Competitions & <span class="gradient-text">Hackathon Journeys</span></h2>
+          <p class="section-subtitle">
+            Where pressure meets innovation. Exploring how I contributed in high-stakes hackathons through teamwork, rapid development, and UI/UX leadership.
+          </p>
+        </div>
+
+        <!-- Hackathon Cards Grid -->
+        <div class="hackathons-grid">
+          
+          <!-- Hackathon 1: Smart India Hackathon (SIH) Internal -->
+          <article class="hackathon-card">
+            <div class="hackathon-image-container">
+              <img src="assets/images/hackathon-sih.svg" alt="Smart India Hackathon Project - EcoTrack" class="hackathon-img" loading="lazy">
+              <div class="hackathon-badge sih-badge">
+                <i class="fa-solid fa-seedling"></i> SIH Campus Edition
+              </div>
+            </div>
+
+            <div class="hackathon-body">
+              <div class="hackathon-event-meta">
+                <span class="event-year"><i class="fa-regular fa-calendar"></i> 2024</span>
+                <span class="team-size"><i class="fa-solid fa-users"></i> Team of 6</span>
+                <span class="hackathon-role"><i class="fa-solid fa-palette"></i> Frontend & UI Lead</span>
+              </div>
+
+              <h3 class="hackathon-project-title">
+                EcoTrack: Smart Waste & Campus Carbon Tracker
+              </h3>
+
+              <p class="hackathon-desc">
+                Engineered an intuitive real-time monitoring web portal enabling campus administrations to visualize waste segregation metrics, calculate carbon footprints, and gamify student recycling contributions.
+              </p>
+
+              <!-- Teamwork & Contribution Spotlight -->
+              <div class="teamwork-highlight-box">
+                <div class="teamwork-label"><i class="fa-solid fa-handshake-angle"></i> Teamwork & Contribution:</div>
+                <p>
+                  Facilitated daily standups, aligned 4 backend peers with frontend data contracts, and designed all responsive dashboards in Figma before coding them.
+                </p>
+              </div>
+
+              <div class="hackathon-tech-stack">
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">HTML5/CSS3</span>
+                <span class="tech-pill">Chart.js</span>
+                <span class="tech-pill">Figma</span>
+                <span class="tech-pill">Git</span>
+              </div>
+
+              <div class="hackathon-card-footer">
+                <button class="btn btn-outline btn-sm inspect-modal-btn" data-hackathon="sih">
+                  <span>Inspect Case Study</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <span class="achievement-pill success"><i class="fa-solid fa-star"></i> Pre-Finalist</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hackathon 2: HackNova 24-Hour National Hackathon -->
+          <article class="hackathon-card">
+            <div class="hackathon-image-container">
+              <img src="assets/images/hackathon-hacknova.svg" alt="HackNova Hackathon - HealthBridge" class="hackathon-img" loading="lazy">
+              <div class="hackathon-badge hacknova-badge">
+                <i class="fa-solid fa-heart-pulse"></i> 24-Hour National Sprint
+              </div>
+            </div>
+
+            <div class="hackathon-body">
+              <div class="hackathon-event-meta">
+                <span class="event-year"><i class="fa-regular fa-calendar"></i> 2024</span>
+                <span class="team-size"><i class="fa-solid fa-users"></i> Team of 4</span>
+                <span class="hackathon-role"><i class="fa-solid fa-laptop-code"></i> Full Stack & UI</span>
+              </div>
+
+              <h3 class="hackathon-project-title">
+                HealthBridge: Telemedicine & SOS Triage Portal
+              </h3>
+
+              <p class="hackathon-desc">
+                Built an emergency telemedicine portal under a strict 24-hour deadline. Enables rural patients to consult available clinics and triage symptoms with zero friction.
+              </p>
+
+              <div class="teamwork-highlight-box">
+                <div class="teamwork-label"><i class="fa-solid fa-handshake-angle"></i> Teamwork & Contribution:</div>
+                <p>
+                  Worked through the night collaboratively; paired with teammate on REST API integration while maintaining high morale and clear division of labor under pressure.
+                </p>
+              </div>
+
+              <div class="hackathon-tech-stack">
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Node.js</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">Express</span>
+                <span class="tech-pill">REST APIs</span>
+              </div>
+
+              <div class="hackathon-card-footer">
+                <button class="btn btn-outline btn-sm inspect-modal-btn" data-hackathon="healthbridge">
+                  <span>Inspect Case Study</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <span class="achievement-pill notice"><i class="fa-solid fa-fire"></i> Top 10 Freshman</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hackathon 3: Technovation Ideathon 2024 (Winner) -->
+          <article class="hackathon-card featured-hackathon">
+            <div class="hackathon-image-container">
+              <img src="assets/images/hackathon-ideathon.svg" alt="Technovation Ideathon - CampusMate" class="hackathon-img" loading="lazy">
+              <div class="hackathon-badge ideathon-badge">
+                <i class="fa-solid fa-trophy"></i> 2nd Place Winner 🏆
+              </div>
+            </div>
+
+            <div class="hackathon-body">
+              <div class="hackathon-event-meta">
+                <span class="event-year"><i class="fa-regular fa-calendar"></i> 2024</span>
+                <span class="team-size"><i class="fa-solid fa-users"></i> Team of 3</span>
+                <span class="hackathon-role"><i class="fa-solid fa-crown"></i> Team Lead & Pitch</span>
+              </div>
+
+              <h3 class="hackathon-project-title">
+                CampusMate: AI Smart Timetable & Resource Bot
+              </h3>
+
+              <p class="hackathon-desc">
+                An innovative campus assistant streamlining timetable clashes, resource sharing, and exam alerts for 1st year students. Built with user-first accessibility and swift UI.
+              </p>
+
+              <div class="teamwork-highlight-box">
+                <div class="teamwork-label"><i class="fa-solid fa-handshake-angle"></i> Teamwork & Contribution:</div>
+                <p>
+                  Led team strategy, organized research interviews with 30+ students in 3 hours, designed the interactive prototype, and delivered the winning pitch to the jury.
+                </p>
+              </div>
+
+              <div class="hackathon-tech-stack">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">UI/UX Prototype</span>
+                <span class="tech-pill">Figma</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Pitch Deck</span>
+              </div>
+
+              <div class="hackathon-card-footer">
+                <button class="btn btn-outline btn-sm inspect-modal-btn" data-hackathon="campusmate">
+                  <span>Inspect Case Study</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <span class="achievement-pill gold"><i class="fa-solid fa-award"></i> 2nd Runner Up</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hackathon 4: DevClash Web-a-Thon -->
+          <article class="hackathon-card">
+            <div class="hackathon-image-container">
+              <img src="assets/images/hackathon-devclash.svg" alt="DevClash Web-a-Thon - SkillVerse" class="hackathon-img" loading="lazy">
+              <div class="hackathon-badge devclash-badge">
+                <i class="fa-solid fa-laptop-code"></i> Web-a-Thon 2024
+              </div>
+            </div>
+
+            <div class="hackathon-body">
+              <div class="hackathon-event-meta">
+                <span class="event-year"><i class="fa-regular fa-calendar"></i> 2024</span>
+                <span class="team-size"><i class="fa-solid fa-users"></i> Team of 4</span>
+                <span class="hackathon-role"><i class="fa-solid fa-code"></i> Frontend Developer</span>
+              </div>
+
+              <h3 class="hackathon-project-title">
+                SkillVerse: Peer-to-Peer Study & Mentorship Hub
+              </h3>
+
+              <p class="hackathon-desc">
+                A collaborative web platform where first-year coders can pair-program, share curated C++ notes, and solve programming doubts with seniors asynchronously.
+              </p>
+
+              <div class="teamwork-highlight-box">
+                <div class="teamwork-label"><i class="fa-solid fa-handshake-angle"></i> Teamwork & Contribution:</div>
+                <p>
+                  Created interactive code preview components, collaborated closely on GitHub PR reviews with team members, and ensured smooth responsive behavior across all viewports.
+                </p>
+              </div>
+
+              <div class="hackathon-tech-stack">
+                <span class="tech-pill">HTML5/CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">CSS Flex/Grid</span>
+                <span class="tech-pill">GitHub Projects</span>
+              </div>
+
+              <div class="hackathon-card-footer">
+                <button class="btn btn-outline btn-sm inspect-modal-btn" data-hackathon="skillverse">
+                  <span>Inspect Case Study</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+                <span class="achievement-pill purple"><i class="fa-solid fa-thumbs-up"></i> Community Pick</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== TECH ENTHUSIAST HOBBIES (DEPTH 70% - 85%) ==================== -->
+    <section class="hobbies-section section-padding depth-layer" id="hobbies" data-depth-name="Tech Hobbies" data-depth-level="5">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-compass"></i> Passions Beyond the Classroom</span>
+          <h2 class="section-title">Hobbies of a True <span class="gradient-text">Tech Enthusiast</span></h2>
+          <p class="section-subtitle">
+            What keeps my curiosity on fire when I'm not attending lectures: exploring code, playing with design tools, and staying deeply wired into modern technology.
+          </p>
+        </div>
+
+        <div class="hobbies-grid">
+          
+          <!-- Hobby 1: Competitive Coding -->
+          <div class="hobby-card">
+            <div class="hobby-icon cp">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h3 class="hobby-title">Competitive Coding & Puzzles</h3>
+            <p class="hobby-text">
+              Solving daily algorithmic challenges on LeetCode and CodeChef in C++. I love the adrenaline of optimizing time complexities from O(N²) down to O(N log N).
+            </p>
+            <div class="hobby-pill"><i class="fa-solid fa-code-commit"></i> Daily DSA Practice</div>
+          </div>
+
+          <!-- Hobby 2: Open Source & Community -->
+          <div class="hobby-card">
+            <div class="hobby-icon open-source">
+              <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <h3 class="hobby-title">Exploring Open Source Repos</h3>
+            <p class="hobby-text">
+              Browsing GitHub trending repositories, reading production-grade architectures, studying clean code conventions, and learning how global dev communities collaborate.
+            </p>
+            <div class="hobby-pill"><i class="fa-brands fa-github"></i> GitHub Explorer</div>
+          </div>
+
+          <!-- Hobby 3: UI/UX Wireframing & Design Systems -->
+          <div class="hobby-card">
+            <div class="hobby-icon design">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <h3 class="hobby-title">UI/UX Wireframing in Figma</h3>
+            <p class="hobby-text">
+              Experimenting with modern design trends like glassmorphism, micro-interactions, dark mode color harmonies, and crafting human-friendly user journeys.
+            </p>
+            <div class="hobby-pill"><i class="fa-brands fa-figma"></i> Design System Fan</div>
+          </div>
+
+          <!-- Hobby 4: IoT & Hardware Tinkering -->
+          <div class="hobby-card">
+            <div class="hobby-icon iot">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="hobby-title">Hardware & IoT Tinkering</h3>
+            <p class="hobby-text">
+              Connecting microcontrollers (Arduino, sensors, ultrasonic distance modules) with simple C code to bridge physical hardware with digital software logic.
+            </p>
+            <div class="hobby-pill"><i class="fa-solid fa-robot"></i> Arduino & Sensors</div>
+          </div>
+
+          <!-- Hobby 5: Tech Podcasts & Sci-Fi Reading -->
+          <div class="hobby-card">
+            <div class="hobby-icon podcast">
+              <i class="fa-solid fa-headphones-simple"></i>
+            </div>
+            <h3 class="hobby-title">Tech Podcasts & Deep Reads</h3>
+            <p class="hobby-text">
+              Listening to developer podcasts (Syntax.fm, Changelog, Lex Fridman) and reading sci-fi/AI literature to anticipate the next frontiers of computing.
+            </p>
+            <div class="hobby-pill"><i class="fa-solid fa-book-open"></i> Lifelong Learner</div>
+          </div>
+
+          <!-- Hobby 6: Team Hackathon Brainstorming -->
+          <div class="hobby-card">
+            <div class="hobby-icon team-hack">
+              <i class="fa-solid fa-people-roof"></i>
+            </div>
+            <h3 class="hobby-title">Hackathon Ideation & Sprints</h3>
+            <p class="hobby-text">
+              Gathering friends around whiteboards to brainstorm MVP ideas for real-world college and societal problems, turning concepts into runnable prototypes within days.
+            </p>
+            <div class="hobby-pill"><i class="fa-solid fa-lightbulb"></i> Rapid Ideation</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CORE VALUES & TEAMWORK (DEPTH 85% - 93%) ==================== -->
+    <section class="values-section section-padding depth-layer" id="values" data-depth-name="Values & Work Ethic" data-depth-level="6">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-heart-pulse"></i> Work Ethic & Mindset</span>
+          <h2 class="section-title">What Defines My <span class="gradient-text">Character</span></h2>
+          <p class="section-subtitle">
+            Technical skills can be taught, but attitude, grit, and how you treat your peers define lasting impact.
+          </p>
+        </div>
+
+        <div class="values-dual-grid">
+          
+          <!-- Pillar 1: Hardworking -->
+          <div class="value-feature-card">
+            <div class="value-badge-tag"><i class="fa-solid fa-bullseye"></i> Quality #1</div>
+            <h3 class="value-title">The Power of Relentless Hard Work</h3>
+            <p class="value-description">
+              "Being in the 1st year of B.Tech is the ultimate blank slate. I don't wait for things to be handed to me; I spend hours reading documentation, debugging failed test cases, and building side projects from scratch. Consistency, discipline, and grit are non-negotiable."
+            </p>
+            <ul class="value-checklist">
+              <li><i class="fa-solid fa-circle-check"></i> Showing up every day with an open mind to learn</li>
+              <li><i class="fa-solid fa-circle-check"></i> Embracing challenging problems without giving up</li>
+              <li><i class="fa-solid fa-circle-check"></i> Attention to code quality, documentation, and clean architecture</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2: Teamwork -->
+          <div class="value-feature-card">
+            <div class="value-badge-tag team"><i class="fa-solid fa-handshake"></i> Quality #2</div>
+            <h3 class="value-title">Firm Believer in Teamwork & Synergy</h3>
+            <p class="value-description">
+              "The best innovations never happen in isolation. True teamwork means active listening, empathy, mutual respect, and bringing out the best in everyone on the team. When we celebrate each other's strengths and support each other's weaknesses, the whole team wins."
+            </p>
+            <ul class="value-checklist">
+              <li><i class="fa-solid fa-circle-check"></i> Clear, transparent communication and zero ego</li>
+              <li><i class="fa-solid fa-circle-check"></i> Collaborative problem solving during high-pressure deadlines</li>
+              <li><i class="fa-solid fa-circle-check"></i> Eager to share knowledge, pair-program, and learn from peers</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Inspiring Quote Banner -->
+        <div class="quote-banner">
+          <i class="fa-solid fa-quote-left quote-icon" aria-hidden="true"></i>
+          <p class="quote-text">
+            "Alone we can do so little; together we can do so much. Hard work builds capability, but teamwork creates legacy."
+          </p>
+          <span class="quote-author">— Gayatri's Guiding Philosophy</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION (DEPTH 93% - 100%) ==================== -->
+    <section class="contact-section section-padding depth-layer" id="contact" data-depth-name="Contact & Connect" data-depth-level="7">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-regular fa-paper-plane"></i> Let's Connect</span>
+          <h2 class="section-title">Have a Hackathon Team or Project? <span class="gradient-text">Let's Talk!</span></h2>
+          <p class="section-subtitle">
+            Whether you want to team up for an upcoming hackathon, collaborate on an open-source project, or just discuss technology and design, I'd love to hear from you.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Contact Info Box -->
+          <div class="contact-info-panel">
+            <h3 class="panel-title">Reach Out Directly</h3>
+            <p class="panel-desc">
+              I am actively looking for collaborative opportunities, freshman project teams, and hackathons. Drop me a line anytime!
+            </p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-detail">
+                  <span class="label">Email Me</span>
+                  <a href="mailto:gayatri.tech.dev@example.com" class="val" id="email-link">gayatri.tech.dev@example.com</a>
+                </div>
+                <button class="copy-email-btn" id="copy-email-btn" title="Copy Email to Clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="contact-detail">
+                  <span class="label">Education</span>
+                  <span class="val">B.Tech 1st Year (CSE)</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div class="contact-detail">
+                  <span class="label">Collaboration</span>
+                  <span class="val">Hackathons, Open Source & UI Design</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links Panel -->
+            <div class="panel-socials">
+              <span class="socials-title">Follow My Learning Journey:</span>
+              <div class="social-btn-group">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+                  <i class="fa-brands fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LeetCode">
+                  <i class="fa-solid fa-code"></i>
+                  <span>LeetCode</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="contact-form-panel">
+            <form id="contact-form" class="contact-form" novalidate>
+              <h3 class="form-title">Send Me a Message</h3>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name <span class="required">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" id="name" name="name" placeholder="e.g. Alex Sharma" required>
+                  </div>
+                  <span class="error-msg" id="name-error">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Your Email <span class="required">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fa-regular fa-envelope input-icon"></i>
+                    <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+                  </div>
+                  <span class="error-msg" id="email-error">Please enter a valid email address</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Purpose / Subject <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-tag input-icon"></i>
+                  <input type="text" id="subject" name="subject" placeholder="e.g. Hackathon Team Collaboration / Project Idea" required>
+                </div>
+                <span class="error-msg" id="subject-error">Please enter a subject</span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message <span class="required">*</span></label>
+                <div class="input-wrap textarea-wrap">
+                  <i class="fa-regular fa-comment-dots input-icon"></i>
+                  <textarea id="message" name="message" rows="5" placeholder="Hi Gayatri, I saw your portfolio and would love to collaborate..." required></textarea>
+                </div>
+                <span class="error-msg" id="message-error">Please enter a message (at least 10 characters)</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block submit-btn" id="submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+
+              <div class="form-status" id="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <a href="#hero" class="brand-logo footer-logo">
+          <span class="logo-box">
+            <span class="logo-symbol">&lt;G/&gt;</span>
+          </span>
+          <span class="logo-text">Gayatri<span class="accent-dot">.</span></span>
+        </a>
+        <p class="footer-tagline">
+          B.Tech 1st Year Engineering Student • Hardworking • Teamwork Believer • Full Stack & UI/UX Craftsman
+        </p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Quick Navigation</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#hackathons">Hackathons</a></li>
+          <li><a href="#hobbies">Hobbies</a></li>
+          <li><a href="#values">Values</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <div class="footer-icons">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" aria-label="LeetCode"><i class="fa-solid fa-code"></i></a>
+          <a href="mailto:gayatri.tech.dev@example.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-row">
+        <p>© <span id="current-year">2026</span> Gayatri. Crafted with pure HTML, CSS, JavaScript &amp; Teamwork.</p>
+        <p class="quote-tiny">"Consistency turns dreams into code."</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== HACKATHON CASE STUDY MODAL ==================== -->
+  <div class="modal-overlay" id="hackathon-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Case Study Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-content" id="modal-content">
+        <!-- Content injected dynamically via Vanilla JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to Top of Page" title="Back to Top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Pure Vanilla JavaScript Bundle -->
+  <script src="js/main.js"></script>
+</body>
+</html>
